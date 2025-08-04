@@ -35,3 +35,4 @@ As seguintes ferramentas e tecnologias foram usadas na construção deste projet
 Você pode me encontrar em:
 - **LinkedIn:** [Seu Perfil no LinkedIn](https://linkedin.com/in/seu-usuario)
 - **Email:** seu.email@exemplo.com
+
