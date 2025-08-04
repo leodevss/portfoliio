@@ -1,3 +1,20 @@
+/* Variáveis de Cor e Fontes */
+:root {
+  --primary-bg: #f3f4f6;
+  --sidebar-bg: #1e293b;
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --accent-light: #93c5fd;
+  --accent-medium: #60a5fa;
+  --accent-dark: #1e40af;
+  --accent-darker: #1e3a8a;
+  --link-color: #2563eb;
+  --link-hover: #1d4ed8;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* Reset básico */
 * {
   margin: 0;
@@ -6,11 +23,13 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-main);
   display: flex;
   min-height: 100vh;
-  background-color: #f3f4f6;
-  color: #1f2937;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px; /* Evita que o título da seção fique escondido no mobile */
 }
 
 /* Layout principal */
@@ -23,8 +42,8 @@ body {
 /* Sidebar */
 .sidebar {
   width: 280px;
-  background-color: #1e293b;
-  color: white;
+  background-color: var(--sidebar-bg);
+  color: var(--text-secondary);
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
@@ -32,6 +51,10 @@ body {
   position: sticky;
   top: 0;
   height: 100vh;
+}
+
+.sidebar header {
+  flex: 1;
 }
 
 .profile {
@@ -42,8 +65,8 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #60a5fa;
+  overflow: hidden; /* Garante que a imagem fique redonda */
+  border: 3px solid var(--accent-medium);
   margin: 0 auto 20px auto;
 }
 
@@ -55,13 +78,13 @@ body {
 
 .profile h1 {
   font-size: 2em;
-  color: #60a5fa;
+  color: var(--accent-medium);
 }
 
-.profile p {
+.profile span {
   font-size: 1em;
   margin-top: 5px;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 nav {
@@ -72,21 +95,20 @@ nav {
 }
 
 nav a {
-  color: #cbd5e1;
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 1.1em;
   transition: all 0.3s ease;
 }
 
 nav a:hover {
-  color: #60a5fa;
+  color: var(--accent-medium);
   padding-left: 8px;
 }
 
 .sidebar footer {
-  margin-top: 40px;
   font-size: 0.9em;
-  color: #94a3b8;
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -104,9 +126,9 @@ nav a:hover {
 
 .main-content h2 {
   font-size: 2em;
-  color: #1e40af;
+  color: var(--accent-dark);
   margin-bottom: 20px;
-  border-bottom: 2px solid #93c5fd;
+  border-bottom: 2px solid var(--accent-light);
   display: inline-block;
   padding-bottom: 5px;
 }
@@ -142,9 +164,9 @@ nav a:hover {
 }
 
 .tech-box {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 20px;
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid var(--link-color);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
@@ -157,13 +179,13 @@ nav a:hover {
 .tech-box h3 {
   margin-bottom: 10px;
   font-size: 1.2em;
-  color: #1e3a8a;
+  color: var(--accent-darker);
 }
 
 .tech-box ul {
   list-style: disc inside;
   padding-left: 10px;
-  color: #374151;
+  color: var(--text-primary);
   font-size: 1em;
   line-height: 1.6;
 }
@@ -177,10 +199,10 @@ nav a:hover {
 }
 
 .project-card {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 20px;
   border-radius: 10px;
-  border-left: 5px solid #1e40af;
+  border-left: 5px solid var(--accent-dark);
   box-shadow: 0 5px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease;
 }
@@ -191,20 +213,26 @@ nav a:hover {
 
 .project-card h3 {
   margin-bottom: 10px;
-  color: #1e40af;
+  color: var(--accent-dark);
 }
 
-.project-card a {
+.project-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
   text-decoration: none;
   font-weight: bold;
-  color: #2563eb;
+  color: var(--link-color);
   display: inline-block;
-  margin-top: 10px;
+  transition: color 0.2s ease;
 }
 
-.project-card a:hover {
+.project-links a:hover {
   text-decoration: underline;
-  color: #1d4ed8;
+  color: var(--link-hover);
 }
 
 /* Responsivo */
@@ -216,21 +244,26 @@ nav a:hover {
   .sidebar {
     width: 100%;
     height: auto;
-    flex-direction: row;
-    align-items: center;
+    position: static; /* Remove o sticky no mobile */
+    flex-direction: column;
     padding: 20px;
-    flex-wrap: wrap;
+  }
+
+  .sidebar header {
+    flex: none;
+    width: 100%;
   }
 
   nav {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 15px 25px; /* Espaçamento vertical e horizontal */
   }
 
   nav a {
     font-size: 0.9em;
+    padding: 5px 0;
   }
 
   .main-content {

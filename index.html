@@ -9,22 +9,21 @@
 <body>
   <div class="layout">
     <aside class="sidebar">
-      <div>
+      <header>
         <div class="profile">
           <div class="photo">
             <img src="img/leofoto.jpg" alt="Foto de Leonardo, desenvolvedor Full Stack">
           </div>
           <h1>Leonardo</h1>
-          <p>Desenvolvedor Full Stack</p>
+          <span>Desenvolvedor Full Stack</span>
         </div>
         <nav>
           <a href="#sobre">Sobre</a>
           <a href="#tecnologias">Tecnologias</a>
-          <a href="#experiencias">Experiências</a>
           <a href="#projetos">Projetos</a>
           <a href="#contato">Contato</a>
         </nav>
-      </div>
+      </header>
       <footer>
         <p>&copy; 2025 Leonardo</p>
       </footer>
@@ -91,15 +90,19 @@
           <div class="project-card">
             <h3>Site para empresa de climatização</h3>
             <p>Sistema web para controle de estoque com backend em PHP, banco MySQL e layout intuitivo.</p>
-            <a href="#">Ver imagens do projeto</a> |
-            <a href="https://github.com/seuusuario/repositorio" target="_blank">Ver código no GitHub</a>
+            <div class="project-links">
+              <a href="#">Ver projeto</a>
+              <a href="https://github.com/seuusuario/repositorio" target="_blank" rel="noopener noreferrer">Ver código</a>
+            </div>
           </div>
+          <!-- Adicione mais .project-card aqui -->
         </div>
       </section>
 
       <section id="contato">
         <h2>Contato</h2>
-        <p>Você pode me encontrar no <a href="https://www.linkedin.com/in/seuperfil" target="_blank">LinkedIn</a> ou enviar um e-mail para <a href="mailto:seuemail@email.com">seuemail@email.com</a>.</p>
+        <p>Estou disponível para novas oportunidades e colaborações. Vamos conversar!</p>
+        <p>Você pode me encontrar no <a href="https://www.linkedin.com/in/seuperfil" target="_blank" rel="noopener noreferrer">LinkedIn</a> ou enviar um e-mail para <a href="mailto:seuemail@email.com">seuemail@email.com</a>.</p>
       </section>
     </main>
   </div>
