@@ -31,7 +31,6 @@
     <!-- Seção Inicial -->
     <section class="hero section" id="inicio">
       <div class="hero-video-bg">
-        <!-- Você pode substituir este vídeo por um de sua preferência -->
         <video src="https://cdn.coverr.co/videos/coverr-a-man-in-a-hoodie-codes-in-a-dark-room-5816/1080p.mp4" autoplay muted loop playsinline></video>
       </div>
       <div class="hero-container container grid">
@@ -84,7 +83,7 @@
           <ul>
             <li><i class='bx bx-check-circle'></i> HTML5 & CSS3</li>
             <li><i class='bx bx-check-circle'></i> JavaScript (ES6+)</li>
-            <li><i class='bx bx-check-circle'></i> React</li>
+            <li><i class='bx bx-check-circle'></i> Laravel</li>
             <li><i class='bx bx-check-circle'></i> Tailwind CSS</li>
             <li><i class='bx bx-check-circle'></i> Design Responsivo</li>
           </ul>
@@ -106,7 +105,6 @@
             <li><i class='bx bx-check-circle'></i> Scrum</li>
             <li><i class='bx bx-check-circle'></i> UI/UX (Figma)</li>
             <li><i class='bx bx-check-circle'></i> FlutterFlow</li>
-            <li><i class='bx bx-check-circle'></i> IA Generativa</li>
           </ul>
         </div>
       </div>
@@ -120,116 +118,41 @@
         <div class="projects-carousel-wrapper reveal">
           <button class="carousel-arrow prev" id="prev-btn" aria-label="Projeto anterior"><i class='bx bx-chevron-left'></i></button>
           <div class="projects-grid" id="projects-grid">
-          <!-- Projeto 1 -->
-          <div class="project-card" 
-               data-title="Sistema de Gestão de Clientes" 
-               data-description="Plataforma completa (CRM) para gerenciamento de clientes, vendas e relatórios. Desenvolvido com foco em performance e usabilidade para equipes comerciais." 
-               data-tech="React,Node.js,PostgreSQL,Tailwind CSS"
-               data-gallery="img/projects/project1.jpg,img/projects/project1-2.jpg,img/projects/project1-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project1.jpg" alt="Capa do projeto Sistema de Gestão" class="project-card-img">
-            <div class="project-card-content">
-              <h3>Sistema de Gestão de Clientes</h3>
-              <p>Plataforma CRM completa para gerenciamento de clientes e vendas.</p>
-              <div class="project-card-tech">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>PostgreSQL</span>
-              </div>
-            </div>
-          </div>
+            <!-- Projeto 1 -->
+<article 
+  class="project-card" 
+  data-title="Sistema de Controle de Estoque" 
+  data-description="Sistema de controle de estoque completo, que possibilita o cadastro de itens, o registro de movimentações de entrada e saída, o acompanhamento do nível de estoque com alertas de baixa quantidade e a emissão de relatórios em PDF sobre entradas, saídas, produtos disponíveis e itens que necessitam reposição."
+  data-tech="PHP,MySQL,HTML,CSS,JavaScript" 
+  data-gallery="img/projects/project1.jpg,img/projects/project1-2.jpg,img/projects/project1-3.jpg" 
+  data-github="https://github.com/">
 
-          <!-- Projeto 2 -->
-          <div class="project-card" 
-               data-title="E-commerce de Eletrônicos" 
-               data-description="Loja virtual moderna com integração de pagamento, carrinho de compras e painel administrativo para gerenciamento de produtos e pedidos." 
-               data-tech="PHP,Laravel,MySQL,JavaScript,Bootstrap"
-               data-gallery="img/projects/project2.jpg,img/projects/project2-2.jpg,img/projects/project2-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project2.jpg" alt="Capa do projeto E-commerce" class="project-card-img">
-            <div class="project-card-content">
-              <h3>E-commerce de Eletrônicos</h3>
-              <p>Loja virtual moderna com integração de pagamento e painel admin.</p>
-              <div class="project-card-tech">
-                <span>PHP</span>
-                <span>Laravel</span>
-                <span>MySQL</span>
-              </div>
-            </div>
-          </div>
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img 
+      src="img/projects/projeto1.png" 
+      alt="Capa do projeto Sistema de Gestão de Clientes" 
+      class="project-card-img">
+  </figure>
 
-          <!-- Projeto 3 -->
-          <div class="project-card" 
-               data-title="Aplicativo de Receitas" 
-               data-description="App mobile para busca e compartilhamento de receitas, com funcionalidades de lista de compras e filtros por ingredientes. Interface limpa e intuitiva." 
-               data-tech="React Native,Firebase,Figma"
-               data-gallery="img/projects/project3.jpg,img/projects/project3-2.jpg,img/projects/project3-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project3.jpg" alt="Capa do projeto App de Receitas" class="project-card-img">
-            <div class="project-card-content">
-              <h3>Aplicativo de Receitas</h3>
-              <p>App mobile para busca e compartilhamento de receitas.</p>
-              <div class="project-card-tech">
-                <span>React Native</span>
-                <span>Firebase</span>
-              </div>
-            </div>
-          </div>
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">Sistema de Controle de Estoque</h3>
+    <p class="project-card-description">
+      Plataforma de controle completa, com avisos,alertas.
+    </p>
 
-          <!-- Projeto 4 -->
-          <div class="project-card" 
-               data-title="Landing Page para Startup" 
-               data-description="Página de captura de leads para uma startup de tecnologia, otimizada para conversão (CRO) e com design responsivo e atraente." 
-               data-tech="HTML5,CSS3,JavaScript,GSAP"
-               data-gallery="img/projects/project4.jpg,img/projects/project4-2.jpg,img/projects/project4-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project4.jpg" alt="Capa do projeto Landing Page" class="project-card-img">
-            <div class="project-card-content">
-              <h3>Landing Page para Startup</h3>
-              <p>Página de captura de leads otimizada para conversão (CRO).</p>
-              <div class="project-card-tech">
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
-              </div>
-            </div>
-          </div>
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+  <li class="tech-badge">PHP</li>
+  <li class="tech-badge">HTML</li>
+  <li class="tech-badge">CSS</li>
+  <li class="tech-badge">JS</li>
+</ul>
 
-          <!-- Projeto 5 -->
-          <div class="project-card" 
-               data-title="Blog Pessoal com CMS" 
-               data-description="Blog com sistema de gerenciamento de conteúdo (CMS) próprio, permitindo a criação, edição e exclusão de posts de forma simples e rápida." 
-               data-tech="PHP,MySQL,JavaScript"
-               data-gallery="img/projects/project5.jpg,img/projects/project5-2.jpg,img/projects/project5-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project5.jpg" alt="Capa do projeto Blog com CMS" class="project-card-img">
-            <div class="project-card-content">
-              <h3>Blog Pessoal com CMS</h3>
-              <p>Blog com sistema de gerenciamento de conteúdo (CMS) próprio.</p>
-              <div class="project-card-tech">
-                <span>PHP</span>
-                <span>MySQL</span>
-              </div>
-            </div>
-          </div>
+  </div>
+</article>
 
-          <!-- Projeto 6 -->
-          <div class="project-card" 
-               data-title="Dashboard de Análise de Dados" 
-               data-description="Painel interativo para visualização de dados de vendas, com gráficos e filtros dinâmicos para facilitar a tomada de decisão estratégica." 
-               data-tech="React,Chart.js,API REST"
-               data-gallery="img/projects/project6.jpg,img/projects/project6-2.jpg,img/projects/project6-3.jpg"
-               data-github="https://github.com/">
-            <img src="img/projects/project6.jpg" alt="Capa do projeto Dashboard" class="project-card-img">
-            <div class="project-card-content">
-              <h3>Dashboard de Análise</h3>
-              <p>Painel interativo para visualização de dados com gráficos dinâmicos.</p>
-              <div class="project-card-tech">
-                <span>React</span>
-                <span>Chart.js</span>
-              </div>
-            </div>
-          </div>
           </div>
           <button class="carousel-arrow next" id="next-btn" aria-label="Próximo projeto"><i class='bx bx-chevron-right'></i></button>
         </div>
@@ -267,10 +190,10 @@
       <h2 class="section-title reveal">Vamos Conversar?</h2>
       <div class="contact-container container">
         <div class="contact-methods grid">
-          <a href="mailto:seu-email@exemplo.com" class="contact-card reveal">
+          <a href="mailto:leosouzadevs@gmail.com" class="contact-card reveal">
             <i class='bx bx-envelope'></i>
             <h3>E-mail</h3>
-            <span>seu-email@exemplo.com</span>
+            <span>leosouzadevs@gmail.com</span>
           </a>
           <a href="https://wa.me/5549991899876" target="_blank" class="contact-card reveal">
             <i class='bx bxl-whatsapp'></i>
@@ -288,7 +211,7 @@
           <h3>Me encontre nas redes sociais</h3>
           <div class="social-icons">
             <a href="https://github.com/leodevss" target="_blank"><i class='bx bxl-github'></i></a>
-            <a href="https://instagram.com/seuusuario" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+            <a href="https://instagram.com/_leosouza7" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
             <a href="https://wa.me/5549991899876" target="_blank"><i class='bx bxl-whatsapp'></i></a>
             <a href="https://www.linkedin.com/in/leonardo-de-souza-3a3247273/" target="_blank"><i class='bx bxl-linkedin'></i></a>
           </div>
@@ -310,14 +233,16 @@
 
   <!-- ==================== GALERIA DE PROJETOS (LIGHTBOX) ==================== -->
   <div class="project-lightbox" id="project-lightbox">
+    <!-- Overlay primeiro -->
+    <div class="project-lightbox-overlay" id="lightbox-overlay"></div>
+
+    <!-- Conteúdo do lightbox -->
     <div class="project-lightbox-content">
       <i class="bx bx-x project-lightbox-close" id="lightbox-close"></i>
       <div class="project-lightbox-body">
         <div class="project-lightbox-gallery">
           <img src="" alt="Imagem principal do projeto" class="lightbox-main-image" id="lightbox-main-image">
-          <div class="lightbox-thumbnails" id="lightbox-thumbnails">
-            <!-- Miniaturas serão inseridas aqui via JS -->
-          </div>
+          <div class="lightbox-thumbnails" id="lightbox-thumbnails"></div>
         </div>
         <div class="project-lightbox-info">
           <h3 id="lightbox-title"></h3>
@@ -330,7 +255,6 @@
         </div>
       </div>
     </div>
-    <div class="project-lightbox-overlay" id="lightbox-overlay"></div>
   </div>
 
   <script src="main.js"></script>
