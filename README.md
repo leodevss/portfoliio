@@ -5,7 +5,7 @@ Bem-vindo ao repositório do meu portfólio pessoal. Este projeto foi criado par
 ## 🚀 Acesso ao Projeto
 
 Você pode visualizar a versão ao vivo do meu portfólio aqui:
-**EM DESENVOLVIMENTO**
+**EM DESENVOLVIMENTO** em breve novidaades
 
 ## 📸 Screenshot
 
