@@ -7,10 +7,6 @@ Bem-vindo ao repositório do meu portfólio pessoal. Este projeto foi criado par
 Você pode visualizar a versão ao vivo do meu portfólio aqui:
 **EM DESENVOLVIMENTO** em breve novidaades
 
-## 📸 Screenshot
-
-![Screenshot da página inicial do portfólio](caminho/para/sua/imagem.png)
-*(Dica: Adicione um screenshot ou GIF da sua página principal aqui)*
 
 ## 📖 Sobre o Projeto
 
