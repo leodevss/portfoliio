@@ -1,4 +1,4 @@
-# Meu Portfólio Profissional
+# Meu Portfólio Profissional em Contrução
 
 Bem-vindo ao repositório do meu portfólio pessoal. Este projeto foi criado para demonstrar minhas habilidades em desenvolvimento web, apresentar os projetos nos quais trabalhei e contar um pouco sobre minha jornada profissional.
 
@@ -26,9 +26,4 @@ As seguintes ferramentas e tecnologias foram usadas na construção deste projet
 - **React** (ou Vue, Angular, etc., se aplicável)
 - **Figma** (para o design)
 
-## 📫 Contato
-
-Você pode me encontrar em:
-- **LinkedIn:** [Seu Perfil no LinkedIn](https://linkedin.com/in/seu-usuario)
-- **Email:** seu.email@exemplo.com
 
