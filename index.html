@@ -3,7 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leonardo | Desenvolvedor Full Stack</title>
+
+  <!-- SEO Meta Tags -->
+  <title>Leonardo de Souza | Desenvolvedor Full Stack</title>
+  <meta name="description" content="Portfólio de Leonardo de Souza - Desenvolvedor Full Stack especializado em PHP, MySQL, JavaScript, React e Tailwind CSS. Confira meus projetos e entre em contato!" />
+  <meta name="keywords" content="desenvolvedor full stack, programador, PHP, MySQL, JavaScript, React, Tailwind CSS, portfolio, web developer, Leonardo de Souza" />
+  <meta name="author" content="Leonardo de Souza" />
+  <meta name="theme-color" content="#3b82f6" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leodevss.github.io/portfoliio/" />
+  <meta property="og:title" content="Leonardo de Souza | Desenvolvedor Full Stack" />
+  <meta property="og:description" content="Portfólio de Leonardo de Souza - Desenvolvedor Full Stack. Criando soluções digitais funcionais e eficientes." />
+  <meta property="og:image" content="https://leodevss.github.io/portfoliio/img/leofoto.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://leodevss.github.io/portfoliio/" />
+  <meta property="twitter:title" content="Leonardo de Souza | Desenvolvedor Full Stack" />
+  <meta property="twitter:description" content="Portfólio de Leonardo de Souza - Desenvolvedor Full Stack. Criando soluções digitais funcionais e eficientes." />
+  <meta property="twitter:image" content="https://leodevss.github.io/portfoliio/img/leofoto.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+
   <link rel="stylesheet" href="style.css" />
   <!-- Ícones: Boxicons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -37,9 +61,9 @@
         <div class="hero-content">
           <span class="hero-subtitle">Olá, eu sou</span>
           <h1 class="hero-title">Leonardo de Souza</h1>
-          <h3 class="hero-education">Desenvolvedor Full Stack</h3>
+          <h3 class="hero-education">Desenvolvedor Full Stack | Especialista em SaaS</h3>
           <p class="hero-description">
-            Focado em criar soluções digitais que sejam funcionais, eficientes e que proporcionem uma ótima experiência ao usuário.
+            Transformando requisitos complexos em software funcional. Especializado em arquiteturas escaláveis, aplicações multi-tenant e sistemas que entregam valor real ao negócio.
           </p>
           <a href="#projetos" class="button">Meus Projetos <i class='bx bx-code-alt'></i></a>
         </div>
@@ -60,15 +84,18 @@
       <h2 class="section-title reveal">Sobre Mim</h2>
       <div class="about-container container grid">
         <div class="about-image reveal">
-          <img src="img/leofoto.jpg" alt="Foto de Leonardo" class="about-photo">
+          <img src="img/leofoto.jpg" alt="Foto de Leonardo" class="about-photo" loading="lazy">
         </div>
         <div class="about-content reveal">
-          <h3>Quem sou eu?</h3>
+          <h3>Desenvolvedor Full Stack | PHP & Laravel | SaaS</h3>
           <p>
-            Minha jornada na tecnologia começou com a curiosidade de criança em desmontar objetos para ver como funcionavam. Hoje, essa mesma curiosidade me move a construir soluções digitais. Encaro a programação como a arte de resolver quebra-cabeças, transformando código em ferramentas que simplificam e melhoram o dia a dia das pessoas.
+            Atuo no desenvolvimento de aplicações web focadas em <strong>performance e escalabilidade</strong>. Minha metodologia é orientada à alta produtividade e entrega de valor, permitindo transformar requisitos complexos em software funcional com agilidade.
           </p>
           <p>
-            Sou um entusiasta do aprendizado contínuo, sempre em busca de novas tecnologias para encontrar a ferramenta certa para cada desafio e entregar produtos de alta qualidade.
+            Tenho experiência prática na construção de <strong>arquiteturas SaaS (Multi-tenant)</strong>, modelagem de banco de dados e implementação de regras de negócio complexas.
+          </p>
+          <p>
+            Meu projeto principal, <strong>LewSoft</strong>, demonstra minha capacidade de atuar em todo o ciclo de vida do software (End-to-End): da concepção da ideia e arquitetura até a implementação do banco de dados e deploy em produção.
           </p>
         </div>
       </div>
@@ -118,38 +145,143 @@
         <div class="projects-carousel-wrapper reveal">
           <button class="carousel-arrow prev" id="prev-btn" aria-label="Projeto anterior"><i class='bx bx-chevron-left'></i></button>
           <div class="projects-grid" id="projects-grid">
-            <!-- Projeto 1 -->
-<article 
-  class="project-card" 
-  data-title="Sistema de Controle de Estoque" 
-  data-description="Sistema de controle de estoque completo, que possibilita o cadastro de itens, o registro de movimentações de entrada e saída, o acompanhamento do nível de estoque com alertas de baixa quantidade e a emissão de relatórios em PDF sobre entradas, saídas, produtos disponíveis e itens que necessitam reposição."
-  data-tech="PHP,MySQL,HTML,CSS,JavaScript" 
-  data-gallery="img/projects/project1.jpg,img/projects/project1-2.jpg,img/projects/project1-3.jpg" 
-  data-github="https://github.com/">
+            <!-- Projeto Destaque: LewSoft -->
+<article
+  class="project-card project-card-featured"
+  data-title="LewSoft - Plataforma SaaS Multi-tenant"
+  data-description="Sistema SaaS completo para gestão de lojas de celulares e eletrônicos. Arquitetura multi-tenant que permite criar lojas independentes com apenas alguns cliques. Inclui: Catálogo virtual multicategorias (Smartphones, Notebooks, Tablets), Simulador inteligente de troca de aparelhos usados com regras condicionais personalizáveis, Motor de precificação dinâmica baseado em estado do produto, Checkout via WhatsApp sem taxas de gateway, Painel administrativo completo para gestão de produtos e estoque, Área Super Admin para criação de novos tenants, Personalização total (logo, cores, banners) por loja. Sistema responsivo e otimizado para mobile-first."
+  data-tech="PHP,Laravel,MySQL,SaaS,Multi-tenant,WhatsApp API"
+  data-gallery="img/projects/projeto1.png,img/projects/projeto1-2.png,img/projects/projeto1-3.png"
+  data-github="https://lewsoft.com.br"
+  data-live="https://lewsoft.com.br">
+
+  <!-- Badge de Destaque -->
+  <div class="project-badge">Projeto Principal</div>
 
   <!-- Imagem de capa do projeto -->
   <figure class="project-card-image">
-    <img 
-      src="img/projects/projeto1.png" 
-      alt="Capa do projeto Sistema de Gestão de Clientes" 
-      class="project-card-img">
+    <img
+      src="img/projects/projeto1.png"
+      alt="Capa do projeto LewSoft"
+      class="project-card-img"
+      loading="lazy">
+  </figure>
+
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">LewSoft - Plataforma SaaS</h3>
+    <p class="project-card-description">
+      Sistema multi-tenant completo para gestão de lojas de eletrônicos com IA de precificação.
+    </p>
+
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+      <li class="tech-badge">Laravel</li>
+      <li class="tech-badge">SaaS</li>
+      <li class="tech-badge">Multi-tenant</li>
+    </ul>
+  </div>
+</article>
+
+            <!-- Projeto 2 -->
+<article
+  class="project-card"
+  data-title="Sistema de Controle de Estoque"
+  data-description="Sistema de controle de estoque completo, que possibilita o cadastro de itens, o registro de movimentações de entrada e saída, o acompanhamento do nível de estoque com alertas de baixa quantidade e a emissão de relatórios em PDF sobre entradas, saídas, produtos disponíveis e itens que necessitam reposição."
+  data-tech="PHP,MySQL,HTML,CSS,JavaScript"
+  data-gallery="img/projects/projeto1.png,img/projects/projeto1-2.png,img/projects/projeto1-3.png"
+  data-github="https://github.com/leodevss/sitees">
+
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img
+      src="img/projects/projeto1.png"
+      alt="Capa do projeto Sistema de Controle de Estoque"
+      class="project-card-img"
+      loading="lazy">
   </figure>
 
   <!-- Conteúdo do card -->
   <div class="project-card-content">
     <h3 class="project-card-title">Sistema de Controle de Estoque</h3>
     <p class="project-card-description">
-      Plataforma de controle completa, com avisos,alertas.
+      Plataforma de controle completa, com avisos e alertas de estoque baixo.
     </p>
 
     <!-- Tecnologias usadas -->
     <ul class="project-card-tech">
-  <li class="tech-badge">PHP</li>
-  <li class="tech-badge">HTML</li>
-  <li class="tech-badge">CSS</li>
-  <li class="tech-badge">JS</li>
-</ul>
+      <li class="tech-badge">PHP</li>
+      <li class="tech-badge">MySQL</li>
+      <li class="tech-badge">JavaScript</li>
+    </ul>
+  </div>
+</article>
 
+            <!-- Projeto 3 -->
+<article
+  class="project-card"
+  data-title="Landing Page Responsiva"
+  data-description="Landing page moderna e totalmente responsiva desenvolvida para uma startup de tecnologia. Conta com design clean, animações suaves, formulário de contato integrado e otimização para SEO. O projeto foi desenvolvido com foco em performance e experiência do usuário, utilizando as melhores práticas de desenvolvimento front-end."
+  data-tech="HTML5,CSS3,JavaScript,Tailwind CSS"
+  data-gallery="img/projects/projeto1.png,img/projects/projeto1-2.png"
+  data-github="https://github.com/leodevss">
+
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img
+      src="img/projects/projeto1.png"
+      alt="Capa do projeto Landing Page Responsiva"
+      class="project-card-img"
+      loading="lazy">
+  </figure>
+
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">Landing Page Responsiva</h3>
+    <p class="project-card-description">
+      Landing page moderna com design clean e animações suaves.
+    </p>
+
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+      <li class="tech-badge">HTML5</li>
+      <li class="tech-badge">Tailwind</li>
+      <li class="tech-badge">JavaScript</li>
+    </ul>
+  </div>
+</article>
+
+            <!-- Projeto 4 -->
+<article
+  class="project-card"
+  data-title="API REST para E-commerce"
+  data-description="API RESTful robusta desenvolvida para gerenciar um sistema de e-commerce. Implementa autenticação JWT, CRUD completo de produtos, categorias e pedidos, sistema de carrinho de compras, integração com gateway de pagamento e geração de relatórios. Desenvolvida seguindo os princípios SOLID e padrões de arquitetura limpa."
+  data-tech="PHP,Laravel,MySQL,API REST,JWT"
+  data-gallery="img/projects/projeto1.png"
+  data-github="https://github.com/leodevss">
+
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img
+      src="img/projects/projeto1.png"
+      alt="Capa do projeto API REST para E-commerce"
+      class="project-card-img"
+      loading="lazy">
+  </figure>
+
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">API REST para E-commerce</h3>
+    <p class="project-card-description">
+      API robusta com autenticação JWT e integração com pagamentos.
+    </p>
+
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+      <li class="tech-badge">PHP</li>
+      <li class="tech-badge">Laravel</li>
+      <li class="tech-badge">MySQL</li>
+    </ul>
   </div>
 </article>
 
@@ -223,7 +355,7 @@
   <!-- ==================== RODAPÉ ==================== -->
   <footer class="footer">
     <div class="footer-container container">
-      <p>&copy; 2024 Leonardo. Todos os direitos reservados.</p>
+      <p>&copy; <span id="current-year"></span> Leonardo. Todos os direitos reservados.</p>
       <div class="footer-socials">
         <a href="https://github.com/leodevss" target="_blank" class="footer-social-link"><i class="bx bxl-github"></i></a>
         <a href="https://www.linkedin.com/in/leonardo-de-souza-3a3247273/" target="_blank" class="footer-social-link"><i class="bx bxl-linkedin-square"></i></a>
@@ -247,9 +379,14 @@
         <div class="project-lightbox-info">
           <h3 id="lightbox-title"></h3>
           <p id="lightbox-description"></p>
-          <a href="#" id="lightbox-github-link" class="button" target="_blank" rel="noopener noreferrer">
-            Ver no GitHub <i class='bx bxl-github'></i>
-          </a>
+          <div class="lightbox-buttons">
+            <a href="#" id="lightbox-live-link" class="button button-primary" target="_blank" rel="noopener noreferrer" style="display: none;">
+              Ver Site ao Vivo <i class='bx bx-globe'></i>
+            </a>
+            <a href="#" id="lightbox-github-link" class="button button-secondary" target="_blank" rel="noopener noreferrer">
+              Código Fonte <i class='bx bxl-github'></i>
+            </a>
+          </div>
           <h4>Tecnologias Utilizadas:</h4>
           <ul id="lightbox-tech"></ul>
         </div>

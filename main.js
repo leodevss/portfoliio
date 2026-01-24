@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const lightboxTechList = document.getElementById('lightbox-tech');
     const lightboxThumbnailsContainer = document.getElementById('lightbox-thumbnails');
     const lightboxGithubLink = document.getElementById('lightbox-github-link');
+    const lightboxLiveLink = document.getElementById('lightbox-live-link');
 
     const openLightbox = (card) => {
       // 1. Mostra o lightbox e o loader imediatamente
@@ -54,12 +55,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const gallery = card.dataset.gallery.split(',');
         const tech = card.dataset.tech.split(',');
         const githubLink = card.dataset.github;
+        const liveLink = card.dataset.live;
 
         // Preenche o lightbox com os dados do projeto
         lightboxTitle.textContent = title;
         lightboxDescription.textContent = description;
         lightboxImg.src = gallery[0];
         lightboxGithubLink.href = githubLink;
+
+        // Mostra/esconde botão "Ver Site ao Vivo" baseado se existe link
+        if (liveLink) {
+          lightboxLiveLink.href = liveLink;
+          lightboxLiveLink.style.display = 'inline-flex';
+        } else {
+          lightboxLiveLink.style.display = 'none';
+        }
 
         // Limpa e cria a lista de tecnologias
         lightboxTechList.innerHTML = '';
@@ -255,6 +265,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  /* ==================== ANO DINÂMICO NO FOOTER ==================== */
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+  }
 
   // Apenas para garantir que o script está sendo executado
   console.log("JS carregado com sucesso!");
