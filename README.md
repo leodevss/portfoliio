@@ -105,24 +105,6 @@ O portfólio é 100% responsivo e foi testado em:
 - 📱 Tablets (768px - 991px)
 - 💻 Desktops (992px+)
 
-## 🎨 Paleta de Cores
-
-| Cor | Hex | Uso |
-|-----|-----|-----|
-| Verde Neon | `#00ff5f` | Cor primária / Destaques |
-| Verde Escuro | `#00cc4c` | Hover / Ativo |
-| Cinza Escuro | `hsl(220, 15%, 22%)` | Fundo do corpo |
-| Cinza Médio | `hsl(220, 15%, 28%)` | Containers |
-| Branco Suave | `hsl(220, 15%, 95%)` | Títulos |
-| Cinza Claro | `hsl(220, 8%, 75%)` | Textos |
-
-## 📈 Melhorias Futuras
-
-- [ ] Adicionar modo escuro/claro
-- [ ] Implementar blog pessoal
-- [ ] Adicionar seção de certificados
-- [ ] Integrar formulário de contato funcional
-- [ ] Adicionar animações mais avançadas com GSAP
 
 ## 📄 Licença
 
