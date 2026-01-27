@@ -1796,15 +1796,16 @@ p {
     top: var(--header-height);
     right: -100%;
     width: 80%;
-    height: 100%;
-    background: #020617;
-    backdrop-filter: blur(12px);
+    height: 100vh;
+    background: #0a0f1a;
     flex-direction: column;
     padding: var(--spacing-xl);
     transition: right var(--transition-base);
-    border-left: 1px solid var(--border-color);
+    border-left: 1px solid rgba(59, 130, 246, 0.2);
     align-items: flex-start;
     gap: var(--spacing-lg);
+    z-index: 999;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   }
 
   .show-menu {
