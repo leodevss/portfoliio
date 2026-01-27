@@ -1797,7 +1797,7 @@ p {
     right: -100%;
     width: 80%;
     height: 100%;
-    background: rgba(2, 6, 23, 0.98);
+    background: #020617;
     backdrop-filter: blur(12px);
     flex-direction: column;
     padding: var(--spacing-xl);
