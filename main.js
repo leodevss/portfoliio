@@ -3,10 +3,19 @@ if (history.scrollRestoration) {
   history.scrollRestoration = 'manual';
 }
 
+// Remove hash da URL ao carregar
+if (window.location.hash) {
+  history.replaceState(null, null, window.location.pathname);
+}
+
+// Força scroll para o topo imediatamente
+window.scrollTo(0, 0);
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Força o scroll para o topo. O setTimeout ajuda a garantir que isso
-  // aconteça depois de qualquer tentativa de restauração de scroll do navegador.
-  setTimeout(() => window.scrollTo(0, 0), 10);
+  // Força o scroll para o topo novamente após o DOM carregar
+  window.scrollTo(0, 0);
+  setTimeout(() => window.scrollTo(0, 0), 50);
+  setTimeout(() => window.scrollTo(0, 0), 150);
 
   /*=============== MOSTRAR MENU ===============*/
   const navMenu = document.getElementById('nav-menu'),
@@ -26,96 +35,144 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   navLinks.forEach(n => n.addEventListener('click', linkAction));
 
-  /*=============== LIGHTBOX DE PROJETOS ===============*/
-  const lightbox = document.getElementById('project-lightbox');
-  const lightboxCloseBtn = document.getElementById('lightbox-close');
-  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  /*=============== MODAL DE PROJETOS PREMIUM ===============*/
+  const modal = document.getElementById('project-lightbox');
+  const modalCloseBtn = document.getElementById('lightbox-close');
+  const modalOverlay = document.getElementById('lightbox-overlay');
   const projectCards = document.querySelectorAll('.project-card');
 
-  // Verifica se todos os elementos essenciais do lightbox existem
-  if (lightbox && lightboxCloseBtn && lightboxOverlay && projectCards.length > 0) {
-    const lightboxImg = document.getElementById('lightbox-main-image');
-    const lightboxTitle = document.getElementById('lightbox-title');
-    const lightboxDescription = document.getElementById('lightbox-description');
-    const lightboxTechList = document.getElementById('lightbox-tech');
-    const lightboxThumbnailsContainer = document.getElementById('lightbox-thumbnails');
-    const lightboxGithubLink = document.getElementById('lightbox-github-link');
-    const lightboxLiveLink = document.getElementById('lightbox-live-link');
+  if (modal && modalCloseBtn && modalOverlay && projectCards.length > 0) {
+    const modalImg = document.getElementById('lightbox-main-image');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalDescription = document.getElementById('lightbox-description');
+    const modalTechList = document.getElementById('lightbox-tech');
+    const modalThumbnails = document.getElementById('lightbox-thumbnails');
+    const modalGithubLink = document.getElementById('lightbox-github-link');
+    const modalLiveLink = document.getElementById('lightbox-live-link');
+    const modalHeroBg = document.getElementById('modal-hero-bg');
 
-    const openLightbox = (card) => {
-      // 1. Mostra o lightbox e o loader imediatamente
-      lightbox.classList.add('active', 'loading');
+    const openModal = (card) => {
+      // Ativa o modal
+      modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      // 2. Popula o conteúdo. O setTimeout permite que o navegador renderize o loader primeiro.
-      setTimeout(() => {
-        // Pega os dados do card clicado usando os atributos data-*
-        const title = card.dataset.title;
-        const description = card.dataset.description;
-        const gallery = card.dataset.gallery.split(',');
-        const tech = card.dataset.tech.split(',');
-        const githubLink = card.dataset.github;
-        const liveLink = card.dataset.live;
+      // Pega os dados do card
+      const title = card.dataset.title;
+      const description = card.dataset.description;
+      const gallery = card.dataset.gallery.split(',');
+      const tech = card.dataset.tech.split(',');
+      const githubLink = card.dataset.github;
+      const liveLink = card.dataset.live;
 
-        // Preenche o lightbox com os dados do projeto
-        lightboxTitle.textContent = title;
-        lightboxDescription.textContent = description;
-        lightboxImg.src = gallery[0];
-        lightboxGithubLink.href = githubLink;
+      // Preenche o título
+      modalTitle.textContent = title;
 
-        // Mostra/esconde botão "Ver Site ao Vivo" baseado se existe link
-        if (liveLink) {
-          lightboxLiveLink.href = liveLink;
-          lightboxLiveLink.style.display = 'inline-flex';
+      // Background do hero com a primeira imagem
+      if (modalHeroBg) {
+        modalHeroBg.style.backgroundImage = `url(${gallery[0]})`;
+      }
+
+      // Processa a descrição como lista de features
+      if (description.includes('|')) {
+        const topics = description.split('|').map(topic => topic.trim());
+        const maxInitialTopics = 4;
+        const hasMoreTopics = topics.length > maxInitialTopics;
+
+        const visibleTopics = topics.slice(0, maxInitialTopics);
+        const hiddenTopics = topics.slice(maxInitialTopics);
+
+        let topicsHTML = '<ul class="project-topics">';
+        topicsHTML += visibleTopics.map(topic => `<li class="topic-visible">${topic}</li>`).join('');
+
+        if (hasMoreTopics) {
+          topicsHTML += hiddenTopics.map(topic => `<li class="topic-hidden">${topic}</li>`).join('');
+          topicsHTML += '</ul>';
+          topicsHTML += `<button class="show-more-btn" id="show-more-topics">
+            <span>Ver todas as ${topics.length} funcionalidades</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>`;
         } else {
-          lightboxLiveLink.style.display = 'none';
+          topicsHTML += '</ul>';
         }
 
-        // Limpa e cria a lista de tecnologias
-        lightboxTechList.innerHTML = '';
-        tech.forEach(t => {
-          const listItem = document.createElement('li');
-          listItem.textContent = t;
-          lightboxTechList.appendChild(listItem);
-        });
+        modalDescription.innerHTML = topicsHTML;
 
-        // Limpa e cria as miniaturas (thumbnails) da galeria
-        lightboxThumbnailsContainer.innerHTML = '';
-        gallery.forEach((imgSrc, index) => {
-          const thumb = document.createElement('img');
-          thumb.src = imgSrc;
-          thumb.alt = `Miniatura ${index + 1} do projeto ${title}`;
-          thumb.addEventListener('click', () => {
-            lightboxImg.src = imgSrc;
-            const currentActive = lightboxThumbnailsContainer.querySelector('img.active');
-            if (currentActive) currentActive.classList.remove('active');
-            thumb.classList.add('active');
-          });
-          if (index === 0) thumb.classList.add('active');
-          lightboxThumbnailsContainer.appendChild(thumb);
-        });
+        // Evento do botão "Ver mais"
+        if (hasMoreTopics) {
+          setTimeout(() => {
+            const showMoreBtn = document.getElementById('show-more-topics');
+            if (showMoreBtn) {
+              showMoreBtn.addEventListener('click', () => {
+                const hiddenItems = modalDescription.querySelectorAll('.topic-hidden');
+                hiddenItems.forEach(item => {
+                  item.classList.remove('topic-hidden');
+                  item.classList.add('topic-visible');
+                });
+                showMoreBtn.style.display = 'none';
+              });
+            }
+          }, 0);
+        }
+      } else {
+        modalDescription.innerHTML = `<p style="color: var(--text-secondary); line-height: 1.7;">${description}</p>`;
+      }
 
-        // 3. Remove o estado de loading para revelar o conteúdo
-        lightbox.classList.remove('loading');
-      }, 250); // Um pequeno delay para a transição
+      // Imagem principal
+      modalImg.src = gallery[0];
+
+      // Links
+      modalGithubLink.href = githubLink;
+
+      if (liveLink) {
+        modalLiveLink.href = liveLink;
+        modalLiveLink.style.display = 'inline-flex';
+      } else {
+        modalLiveLink.style.display = 'none';
+      }
+
+      // Lista de tecnologias (no hero)
+      modalTechList.innerHTML = '';
+      tech.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t.trim();
+        modalTechList.appendChild(li);
+      });
+
+      // Thumbnails da galeria
+      modalThumbnails.innerHTML = '';
+      gallery.forEach((imgSrc, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = imgSrc;
+        thumb.alt = `Screenshot ${index + 1}`;
+        thumb.addEventListener('click', () => {
+          modalImg.src = imgSrc;
+          if (modalHeroBg) {
+            modalHeroBg.style.backgroundImage = `url(${imgSrc})`;
+          }
+          modalThumbnails.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+        if (index === 0) thumb.classList.add('active');
+        modalThumbnails.appendChild(thumb);
+      });
     };
 
-    const closeLightbox = () => {
-      lightbox.classList.remove('active', 'loading'); // Garante que a classe de loading seja removida
-      document.body.style.overflow = ''; // Restaura o scroll da página
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
     };
 
+    // Event listeners
     projectCards.forEach(card => {
-      card.addEventListener('click', () => openLightbox(card));
+      card.addEventListener('click', () => openModal(card));
     });
 
-    lightboxCloseBtn.addEventListener('click', closeLightbox);
-    lightboxOverlay.addEventListener('click', closeLightbox);
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
 
-    // Adiciona a funcionalidade de fechar com a tecla 'Escape'
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
       }
     });
   }
