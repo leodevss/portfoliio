@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:coverr.co)",
+      "WebFetch(domain:www.pexels.com)"
     ]
   }
 }
