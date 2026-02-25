@@ -17,25 +17,38 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => window.scrollTo(0, 0), 50);
   setTimeout(() => window.scrollTo(0, 0), 150);
 
-  /*=============== MOSTRAR MENU ===============*/
-  const navMenu = document.getElementById('nav-menu'),
-        navToggle = document.getElementById('nav-toggle');
+  /*======================================================
+    MENU MOBILE PREMIUM (CORRIGIDO)
+  ======================================================*/
+  const navMenu = document.getElementById('nav-menu');
+  const navToggle = document.getElementById('nav-toggle');
+  const navClose = document.getElementById('nav-close');
+  const navLinks = document.querySelectorAll('.nav-link');
 
-  if (navToggle) {
+  // 1. Abrir Menu
+  if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('show-menu');
+      navMenu.classList.add('show-menu');
     });
   }
 
-  const navLinks = document.querySelectorAll('.nav-link');
-  function linkAction() {
-    if (navMenu.classList.contains('show-menu')) {
+  // 2. Fechar Menu no Botão X
+  if (navClose && navMenu) {
+    navClose.addEventListener('click', () => {
       navMenu.classList.remove('show-menu');
-    }
+    });
   }
-  navLinks.forEach(n => n.addEventListener('click', linkAction));
 
-  /*=============== MODAL DE PROJETOS PREMIUM ===============*/
+  // 3. Fechar Menu ao clicar em qualquer Link
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show-menu');
+    });
+  });
+
+  /*======================================================
+    MODAL DE PROJETOS PREMIUM
+  ======================================================*/
   const modal = document.getElementById('project-lightbox');
   const modalCloseBtn = document.getElementById('lightbox-close');
   const modalOverlay = document.getElementById('lightbox-overlay');
@@ -59,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Pega os dados do card
       const title = card.dataset.title;
       const description = card.dataset.description;
-      const gallery = card.dataset.gallery.split(',');
-      const tech = card.dataset.tech.split(',');
+      const gallery = card.dataset.gallery ? card.dataset.gallery.split(',') : [];
+      const tech = card.dataset.tech ? card.dataset.tech.split(',') : [];
       const githubLink = card.dataset.github;
       const liveLink = card.dataset.live;
 
@@ -68,12 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
       modalTitle.textContent = title;
 
       // Background do hero com a primeira imagem
-      if (modalHeroBg) {
+      if (modalHeroBg && gallery.length > 0) {
         modalHeroBg.style.backgroundImage = `url(${gallery[0]})`;
       }
 
       // Processa a descrição como lista de features
-      if (description.includes('|')) {
+      if (description && description.includes('|')) {
         const topics = description.split('|').map(topic => topic.trim());
         const maxInitialTopics = 4;
         const hasMoreTopics = topics.length > maxInitialTopics;
@@ -113,48 +126,56 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }, 0);
         }
-      } else {
+      } else if (description) {
         modalDescription.innerHTML = `<p style="color: var(--text-secondary); line-height: 1.7;">${description}</p>`;
       }
 
       // Imagem principal
-      modalImg.src = gallery[0];
+      if (gallery.length > 0) {
+        modalImg.src = gallery[0];
+      }
 
       // Links
-      modalGithubLink.href = githubLink;
+      if (modalGithubLink && githubLink) modalGithubLink.href = githubLink;
 
-      if (liveLink) {
-        modalLiveLink.href = liveLink;
-        modalLiveLink.style.display = 'inline-flex';
-      } else {
-        modalLiveLink.style.display = 'none';
+      if (modalLiveLink) {
+        if (liveLink) {
+          modalLiveLink.href = liveLink;
+          modalLiveLink.style.display = 'inline-flex';
+        } else {
+          modalLiveLink.style.display = 'none';
+        }
       }
 
       // Lista de tecnologias (no hero)
-      modalTechList.innerHTML = '';
-      tech.forEach(t => {
-        const li = document.createElement('li');
-        li.textContent = t.trim();
-        modalTechList.appendChild(li);
-      });
+      if (modalTechList) {
+        modalTechList.innerHTML = '';
+        tech.forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = t.trim();
+          modalTechList.appendChild(li);
+        });
+      }
 
       // Thumbnails da galeria
-      modalThumbnails.innerHTML = '';
-      gallery.forEach((imgSrc, index) => {
-        const thumb = document.createElement('img');
-        thumb.src = imgSrc;
-        thumb.alt = `Screenshot ${index + 1}`;
-        thumb.addEventListener('click', () => {
-          modalImg.src = imgSrc;
-          if (modalHeroBg) {
-            modalHeroBg.style.backgroundImage = `url(${imgSrc})`;
-          }
-          modalThumbnails.querySelectorAll('img').forEach(img => img.classList.remove('active'));
-          thumb.classList.add('active');
+      if (modalThumbnails && gallery.length > 0) {
+        modalThumbnails.innerHTML = '';
+        gallery.forEach((imgSrc, index) => {
+          const thumb = document.createElement('img');
+          thumb.src = imgSrc;
+          thumb.alt = `Screenshot ${index + 1}`;
+          thumb.addEventListener('click', () => {
+            modalImg.src = imgSrc;
+            if (modalHeroBg) {
+              modalHeroBg.style.backgroundImage = `url(${imgSrc})`;
+            }
+            modalThumbnails.querySelectorAll('img').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
+          });
+          if (index === 0) thumb.classList.add('active');
+          modalThumbnails.appendChild(thumb);
         });
-        if (index === 0) thumb.classList.add('active');
-        modalThumbnails.appendChild(thumb);
-      });
+      }
     };
 
     const closeModal = () => {
@@ -167,8 +188,8 @@ document.addEventListener("DOMContentLoaded", function () {
       card.addEventListener('click', () => openModal(card));
     });
 
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -177,7 +198,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /*=============== CARROSSEL ===============*/
+  /*======================================================
+    CARROSSEL DE PROJETOS
+  ======================================================*/
   const projectsGrid = document.getElementById('projects-grid');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
@@ -187,44 +210,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const updateCarouselButtons = () => {
       const maxScrollLeft = projectsGrid.scrollWidth - projectsGrid.clientWidth;
-      // Desativa o botão 'prev' se estiver no início (com uma pequena tolerância)
       prevBtn.disabled = projectsGrid.scrollLeft < 10;
-      // Desativa o botão 'next' se estiver no fim (com uma pequena tolerância)
       nextBtn.disabled = projectsGrid.scrollLeft > maxScrollLeft - 10;
     };
 
     prevBtn.addEventListener('click', () => {
-      projectsGrid.scrollBy({
-        left: -scrollAmount,
-        behavior: 'smooth',
-      });
+      projectsGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
 
     nextBtn.addEventListener('click', () => {
-      projectsGrid.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
+      projectsGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 
     projectsGrid.addEventListener('scroll', updateCarouselButtons);
-    window.addEventListener('load', updateCarouselButtons); // Verifica o estado inicial
+    window.addEventListener('load', updateCarouselButtons);
   }
 
-  /* ==================== EFEITO DE DIGITAÇÃO (TYPEWRITER) ==================== */
+  /*======================================================
+    EFEITO DE DIGITAÇÃO (TYPEWRITER)
+  ======================================================*/
   function typeWriterEffect() {
     const heroTitle = document.querySelector('.hero-title');
     const heroEducation = document.querySelector('.hero-education');
 
     if (!heroTitle || !heroEducation) return;
 
-    const titleText = heroTitle.textContent.trim();
-    const educationText = heroEducation.textContent.trim();
+    // Remove qualquer cursor antigo antes de começar
+    const oldCursor = heroTitle.querySelector('.hero-cursor');
+    if (oldCursor) oldCursor.remove();
+
+    const titleText = heroTitle.textContent.trim() || "Leonardo de Souza";
+    const educationText = heroEducation.textContent.trim() || "Desenvolvedor Full Stack";
+    
     const typeSpeed = 120;
     const subtitleSpeed = 75;
-    const initialDelay = 800; // Atraso inicial para começar a digitar
+    const initialDelay = 800;
 
-    // Limpa o texto original e garante que os elementos estejam visíveis
     heroTitle.textContent = '';
     heroEducation.textContent = '';
     heroTitle.style.opacity = 1;
@@ -232,13 +253,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const type = (element, text, speed, callback) => {
       let i = 0;
-      // Adiciona o cursor piscando no início
       element.innerHTML = '<span class="hero-cursor"></span>';
 
       const typingInterval = setInterval(() => {
         if (i < text.length) {
           const cursor = element.querySelector('.hero-cursor');
-          // Insere o texto antes do cursor
           if (cursor) {
             cursor.insertAdjacentText('beforebegin', text.charAt(i));
           }
@@ -252,22 +271,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       type(heroTitle, titleText, typeSpeed, () => {
-        heroTitle.querySelector('.hero-cursor')?.remove(); // Remove o cursor do título
-        type(heroEducation, educationText, subtitleSpeed, null); // Inicia a digitação do subtítulo
+        const cursor = heroTitle.querySelector('.hero-cursor');
+        if(cursor) cursor.remove(); 
+        type(heroEducation, educationText, subtitleSpeed, null);
       });
     }, initialDelay);
   }
-  typeWriterEffect();
+  
+  // Impede que o Typewriter rode duas vezes
+  if(!window.typeWriterRodou) {
+      typeWriterEffect();
+      window.typeWriterRodou = true;
+  }
 
-  /* ==================== ANIMAÇÃO DOS NÚMEROS DAS ESTATÍSTICAS ==================== */
+  /*======================================================
+    ANIMAÇÃO DOS NÚMEROS DAS ESTATÍSTICAS
+  ======================================================*/
   const statsSection = document.querySelector('.stats');
 
   if (statsSection) {
-    // Animação de contagem usando requestAnimationFrame para melhor performance e suavidade
     const animateCounter = (element) => {
       const target = +element.getAttribute('data-target');
       const hasPlus = element.getAttribute('data-plus') === 'true';
-      const duration = 2000; // Duração da animação em milissegundos
+      const duration = 2000;
       let startTimestamp = null;
 
       const step = (timestamp) => {
@@ -280,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (progress < 1) {
           window.requestAnimationFrame(step);
         } else {
-          element.textContent = target; // Garante que o valor final seja exato
+          element.textContent = target;
           if (hasPlus) {
             element.textContent += '+';
           }
@@ -296,39 +322,40 @@ document.addEventListener("DOMContentLoaded", function () {
           statsNumbers.forEach(numberEl => {
             if (!numberEl.dataset.animated) {
               animateCounter(numberEl);
-              numberEl.dataset.animated = 'true'; // Marca como animado para não repetir
+              numberEl.dataset.animated = 'true';
             }
           });
-          observer.unobserve(entry.target); // Para de observar após animar
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.4 }); // Inicia quando 40% da seção estiver visível
+    }, { threshold: 0.4 });
 
     observer.observe(statsSection);
   }
 
-  /* ==================== ANIMAÇÃO DE SCROLL (REVEAL) ==================== */
+  /*======================================================
+    ANIMAÇÃO DE SCROLL (REVEAL)
+  ======================================================*/
   const revealElements = document.querySelectorAll('.reveal');
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Para de observar após a animação
+        observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1 // Inicia quando 10% do elemento está visível
-  });
+  }, { threshold: 0.1 });
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  /* ==================== ANO DINÂMICO NO FOOTER ==================== */
+  /*======================================================
+    ANO DINÂMICO NO FOOTER
+  ======================================================*/
   const currentYearElement = document.getElementById('current-year');
   if (currentYearElement) {
     currentYearElement.textContent = new Date().getFullYear();
   }
 
-  // Apenas para garantir que o script está sendo executado
-  console.log("JS carregado com sucesso!");
+  console.log("JS carregado com sucesso! Menu Mobile e Modal funcionando.");
 });

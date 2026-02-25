@@ -222,26 +222,27 @@ p {
 }
 
 /* Logo mais sofisticada */
+/* Nova Logo Tech */
 .nav-logo {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
-  transition: all var(--transition-base);
+  letter-spacing: 0.5px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  gap: 2px;
+  transition: all var(--transition-base);
 }
 
-.logo-dot {
+.logo-tag {
   color: var(--primary-color);
-  font-size: 2rem;
-  line-height: 0;
-  text-shadow: 0 0 15px var(--glow-primary);
+  font-weight: 900;
 }
 
 .nav-logo:hover {
-  opacity: 0.8;
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
+
 
 /* Layout do Menu Central */
 .nav-list {
@@ -1952,21 +1953,23 @@ p {
     display: block;
   }
 
-  /* Substitua a parte do .nav-menu antiga do mobile por essa: */
+  /* ================= NAVBAR MOBILE FIX ================= */
+  /* ================= NAVBAR MOBILE PREMIUM ================= */
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 80%;
+    right: -100%; /* Fica escondido */
+    width: 85%;
+    max-width: 320px;
     height: 100vh;
-    background: rgba(3, 7, 18, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 5rem 2rem;
-    transition: right var(--transition-base);
-    border-left: 1px solid rgba(16, 185, 129, 0.1);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(3, 7, 18, 0.98) 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 6rem 1.5rem 4rem;
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid rgba(16, 185, 129, 0.15);
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.6);
     z-index: 1000;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   }
 
   .show-menu {
@@ -1974,26 +1977,93 @@ p {
   }
 
   .nav-list {
+    display: flex;
     flex-direction: column;
+    gap: 1rem;
     background: transparent;
     border: none;
-    align-items: flex-start;
-    gap: 1.5rem;
     padding: 0;
   }
 
+  /* Links estilo "Botões de App" */
   .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     font-size: 1.1rem;
-    padding: 0;
-    background: transparent !important;
+    font-weight: 600;
+    color: var(--text-secondary);
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
   }
 
+  .nav-link i {
+    font-size: 1.5rem;
+    color: var(--primary-light);
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+
+  /* Efeito ao tocar no celular */
+  .nav-link:active {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: var(--text-primary);
+    transform: scale(0.98);
+  }
+
+  /* Botão X Elegante */
   .nav-close {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    font-size: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nav-close:active {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    transform: scale(0.95);
   }
 
   .nav-toggle {
     display: block;
+    font-size: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .nav-btn-contact {
+    display: none;
+  }
+  /* Menu Hamburger */
+  .nav-toggle {
+    display: block;
+    font-size: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  /* Oculta o botão "Fale comigo" para não quebrar o layout no celular */
+  .nav-btn-contact {
+    display: none;
   }
   
   .nav-btn-contact {
