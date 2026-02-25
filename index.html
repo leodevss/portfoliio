@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Meta Tags -->
-  <title>Leonardo de Souza | Desenvolvedor Full Stack</title>
+  <title>Leonardo de Souza</title>
   <meta name="description" content="Portfólio de Leonardo de Souza - Desenvolvedor Full Stack especializado em PHP, MySQL, JavaScript, React e Tailwind CSS. Confira meus projetos e entre em contato!" />
   <meta name="keywords" content="desenvolvedor full stack, programador, PHP, MySQL, JavaScript, React, Tailwind CSS, portfolio, web developer, Leonardo de Souza" />
   <meta name="author" content="Leonardo de Souza" />
@@ -34,18 +34,48 @@
 </head>
 <body>
   <!-- ==================== CABEÇALHO ==================== -->
-  <header class="header">
+  <header class="header" id="header">
     <nav class="nav container">
-      <a href="#inicio" class="nav-logo">Leonardo</a>
-      <ul class="nav-menu" id="nav-menu">
-        <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
-        <li class="nav-item"><a href="#sobre" class="nav-link">Sobre Mim</a></li>
-        <li class="nav-item"><a href="#habilidades" class="nav-link">Habilidades</a></li>
-        <li class="nav-item"><a href="#projetos" class="nav-link">Projetos</a></li>
-        <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
-      </ul>
-      <div class="nav-toggle" id="nav-toggle">
-        <i class="bx bx-menu"></i>
+      <a href="#inicio" class="nav-logo">
+        Leo<span class="logo-dot">.</span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#inicio" class="nav-link">
+              <i class='bx bx-home-alt'></i> Início
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#sobre" class="nav-link">
+              <i class='bx bx-user'></i> Sobre
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#habilidades" class="nav-link">
+              <i class='bx bx-code-alt'></i> Skills
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#projetos" class="nav-link">
+              <i class='bx bx-briefcase-alt-2'></i> Projetos
+            </a>
+          </li>
+        </ul>
+        
+        <div class="nav-close" id="nav-close">
+          <i class='bx bx-x'></i>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contato" class="nav-btn-contact">
+          Fale Comigo <i class='bx bx-message-square-dots'></i>
+        </a>
+        <div class="nav-toggle" id="nav-toggle">
+          <i class='bx bx-menu-alt-right'></i>
+        </div>
       </div>
     </nav>
   </header>
@@ -84,28 +114,61 @@
     <section class="section" id="sobre">
       <h2 class="section-title reveal">Sobre Mim</h2>
       <div class="about-container container grid">
-        <div class="about-image reveal">
-          <img src="img/IMG_3624.jpg" alt="Foto de Leonardo" class="about-photo" loading="lazy">
+        
+        <div class="about-image-wrapper reveal">
+          <div class="about-image-inner">
+            <img src="img/IMG_3624.jpg" alt="Foto de Leonardo" class="about-photo" loading="lazy">
+          </div>
+          
+          <div class="floating-badge badge-1">
+            <i class='bx bx-code-alt'></i>
+            <span>Freelancer</span>
+          </div>
+          <div class="floating-badge badge-2">
+            <i class='bx bx-book-reader'></i>
+            <span>Graduado em ADS</span>
+          </div>
         </div>
+
         <div class="about-content reveal">
-          <h3>Desenvolvedor Full Stack</h3>
-          <p>
-            Especializado em criar aplicações web de alta performance e escalabilidade. Transformo requisitos complexos em soluções eficientes, com foco em desenvolvimento end-to-end.
+          <div class="about-tag">👋 Muito prazer, sou o Leonardo</div>
+          <h3 class="about-heading">Transformando regras de negócios em <span>soluções digitais reais.</span></h3>
+          <p class="about-text">
+            Tenho 21 anos, moro em Fraiburgo/SC e atuo desenvolvendo aplicações completas, do banco de dados até a interface do usuário. Meu foco é entender a dor do cliente e criar sistemas eficientes, escaláveis e focados em experiência do usuário (como plataformas SaaS e painéis de gestão).
           </p>
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <i class='bx bx-check-circle'></i>
-              <span>Backend com PHP & Laravel</span>
+          
+          <div class="about-bento-grid">
+            <div class="bento-card">
+              <div class="bento-icon">
+                <i class='bx bx-server'></i>
+              </div>
+              <div class="bento-info">
+                <h4>Backend Sólido</h4>
+                <span>PHP, Laravel & Python</span>
+              </div>
             </div>
-            <div class="highlight-item">
-              <i class='bx bx-check-circle'></i>
-              <span>Frontend Responsivo</span>
+            
+            <div class="bento-card">
+              <div class="bento-icon">
+                <i class='bx bx-devices'></i>
+              </div>
+              <div class="bento-info">
+                <h4>Frontend Dinâmico</h4>
+                <span>JS, React & Tailwind</span>
+              </div>
             </div>
-            <div class="highlight-item">
-              <i class='bx bx-check-circle'></i>
-              <span>Banco de Dados MySQL</span>
+            
+            <div class="bento-card">
+              <div class="bento-icon">
+                <i class='bx bx-rocket'></i>
+              </div>
+              <div class="bento-info">
+                <h4>Visão de Produto</h4>
+                <span>Experiência com SaaS</span>
+              </div>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
