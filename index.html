@@ -31,8 +31,14 @@
   <link rel="stylesheet" href="style.css" />
   <!-- Ícones: Boxicons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Devicons: ícones de tecnologias -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
 </head>
 <body>
+  <!-- Textura de granulado sutil -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <!-- Spotlight cursor -->
+  <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
   <!-- ==================== CABEÇALHO ==================== -->
  <header class="header" id="header">
     <nav class="nav container">
@@ -89,13 +95,19 @@
       <div class="hero-particles" aria-hidden="true"></div>
       <div class="hero-container container grid">
         <div class="hero-content">
-          <span class="hero-subtitle">Olá, eu sou</span>
+          <div class="hero-available">
+            <span class="hero-available-dot"></span>
+            Disponível para novos projetos
+          </div>
+          <span class="hero-subtitle" style="display:block;">Olá, eu sou</span>
           <h1 class="hero-title">Leonardo de Souza</h1>
           <h3 class="hero-education">Desenvolvedor Full Stack</h3>
           <p class="hero-description">
-            Crio aplicações web do zero ao deploy. PHP, Laravel, JavaScript e tudo que precisar para tirar sua ideia do papel.
+            PHP, Laravel, JavaScript e mais. Aqui você encontra o que eu sei fazer — projetos reais, do banco de dados até a tela.
           </p>
-          <a href="#projetos" class="button">Ver Projetos <i class='bx bx-right-arrow-alt'></i></a>
+          <div class="hero-buttons">
+            <a href="#projetos" class="button">Ver Projetos <i class='bx bx-right-arrow-alt'></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -111,63 +123,99 @@
 
     <!-- Sobre Mim -->
     <section class="section" id="sobre">
-      <h2 class="section-title reveal">Sobre Mim</h2>
       <div class="about-container container grid">
-        
+
+        <!-- Foto -->
         <div class="about-image-wrapper reveal">
           <div class="about-image-inner">
             <img src="img/IMG_3624.jpg" alt="Foto de Leonardo" class="about-photo" loading="lazy">
           </div>
-          
-          <div class="floating-badge badge-1">
-            <i class='bx bx-code-alt'></i>
-            <span>Freelancer</span>
-          </div>
-          <div class="floating-badge badge-2">
-            <i class='bx bx-book-reader'></i>
-            <span>Graduado em ADS</span>
+          <div class="about-avail-badge">
+            <span class="avail-dot"></span>
+            Disponível para projetos
           </div>
         </div>
 
+        <!-- Conteúdo -->
         <div class="about-content reveal">
-          <div class="about-tag">👋 Muito prazer, sou o Leonardo</div>
-          <h3 class="about-heading">Transformando regras de negócios em <span>soluções digitais reais.</span></h3>
-          <p class="about-text">
-            Tenho 21 anos, moro em Fraiburgo/SC e atuo desenvolvendo aplicações completas, do banco de dados até a interface do usuário. Meu foco é entender a dor do cliente e criar sistemas eficientes, escaláveis e focados em experiência do usuário (como plataformas SaaS e painéis de gestão).
+          <span class="about-eyebrow">Sobre Mim</span>
+          <h3 class="about-statement">
+            Transformo rotinas ineficientes das empresas em soluções de software
+            <span class="about-highlight">rápidas, seguras e escaláveis.</span>
+          </h3>
+          <p class="about-sub">
+            Atuo de ponta a ponta: do levantamento de requisitos com o cliente até o deploy em produção.
           </p>
-          
-          <div class="about-bento-grid">
-            <div class="bento-card">
-              <div class="bento-icon">
-                <i class='bx bx-server'></i>
-              </div>
-              <div class="bento-info">
-                <h4>Backend Sólido</h4>
-                <span>PHP, Laravel & Python</span>
+          <div class="about-cards">
+            <div class="about-card">
+              <i class='bx bx-layer'></i>
+              <div class="about-card-info">
+                <strong>Full Stack</strong>
+                <span>PHP · Laravel · JS</span>
               </div>
             </div>
-            
-            <div class="bento-card">
-              <div class="bento-icon">
-                <i class='bx bx-devices'></i>
-              </div>
-              <div class="bento-info">
-                <h4>Frontend Dinâmico</h4>
-                <span>JS, React & Tailwind</span>
+            <div class="about-card">
+              <i class='bx bx-rocket'></i>
+              <div class="about-card-info">
+                <strong>Em Produção</strong>
+                <span>SaaS e ERP reais</span>
               </div>
             </div>
-            
-            <div class="bento-card">
-              <div class="bento-icon">
-                <i class='bx bx-rocket'></i>
-              </div>
-              <div class="bento-info">
-                <h4>Visão de Produto</h4>
-                <span>Experiência com SaaS</span>
+            <div class="about-card">
+              <i class='bx bx-graduation'></i>
+              <div class="about-card-info">
+                <strong>ADS · 21 anos</strong>
+                <span>Fraiburgo / SC</span>
               </div>
             </div>
           </div>
-          
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Trajetória / Timeline -->
+    <section class="section timeline-section" id="experiencia">
+      <h2 class="section-title reveal">Trajetória</h2>
+      <div class="timeline-container container">
+        <div class="timeline-grid">
+
+          <div class="tl-card reveal">
+            <span class="tl-date">2025 — Atual</span>
+            <h3 class="tl-title">Freelancer Full Stack</h3>
+            <p class="tl-desc">Sistemas web completos do zero ao deploy, foco em SaaS e ERPs.</p>
+            <div class="tl-tags">
+              <span>Laravel</span><span>PHP</span><span>SaaS</span><span>React</span>
+            </div>
+          </div>
+
+          <div class="tl-card reveal">
+            <span class="tl-date">2024</span>
+            <h3 class="tl-title">LewControl — ERP para Cliente Real</h3>
+            <p class="tl-desc">ERP em produção para empresa de ar-condicionado com contratos públicos.</p>
+            <div class="tl-tags">
+              <span>ERP</span><span>Laravel 12</span><span>MySQL</span>
+            </div>
+          </div>
+
+          <div class="tl-card reveal">
+            <span class="tl-date">2023</span>
+            <h3 class="tl-title">LewSoft — SaaS Multi-tenant</h3>
+            <p class="tl-desc">Plataforma SaaS lançada com catálogo digital e simulação de troca.</p>
+            <div class="tl-tags">
+              <span>SaaS</span><span>Multi-tenant</span><span>Alpine.js</span>
+            </div>
+          </div>
+
+          <div class="tl-card reveal">
+            <span class="tl-date">2023 — 2026</span>
+            <h3 class="tl-title">Graduação em ADS</h3>
+            <p class="tl-desc">Análise e Desenvolvimento de Sistemas. Primeiro cliente ainda na faculdade.</p>
+            <div class="tl-tags">
+              <span>Tecnólogo</span><span>ADS</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -175,36 +223,52 @@
     <!-- Habilidades -->
     <section class="section" id="habilidades">
       <h2 class="section-title reveal">Minhas Habilidades</h2>
-      <div class="skills-container container grid">
-        <div class="skill-card reveal">
-          <h3>Frontend</h3>
-          <ul>
-            <li><i class='bx bx-check-circle'></i> HTML5 & CSS3</li>
-            <li><i class='bx bx-check-circle'></i> JavaScript (ES6+)</li>
-            <li><i class='bx bx-check-circle'></i> Laravel</li>
-            <li><i class='bx bx-check-circle'></i> Tailwind CSS</li>
-            <li><i class='bx bx-check-circle'></i> Design Responsivo</li>
-          </ul>
+      <div class="skills-wrapper container">
+
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <div class="skill-group-icon"><i class='bx bx-layout'></i></div>
+            <h3>Front-end</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML5 / CSS3</span>
+            <span class="skill-pill"><i class="devicon-javascript-plain colored"></i> JavaScript ES6+</span>
+            <span class="skill-pill"><i class="devicon-react-original colored"></i> React</span>
+            <span class="skill-pill"><i class="devicon-alpinejs-plain colored"></i> Alpine.js</span>
+            <span class="skill-pill"><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</span>
+          </div>
         </div>
-        <div class="skill-card reveal">
-          <h3>Backend</h3>
-          <ul>
-            <li><i class='bx bx-check-circle'></i> PHP</li>
-            <li><i class='bx bx-check-circle'></i> Python</li>
-            <li><i class='bx bx-check-circle'></i> Java (Básico)</li>
-            <li><i class='bx bx-check-circle'></i> API REST</li>
-            <li><i class='bx bx-check-circle'></i> MySQL & PostgreSQL</li>
-          </ul>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <div class="skill-group-icon"><i class='bx bx-server'></i></div>
+            <h3>Back-end</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-php-plain colored"></i> PHP 8</span>
+            <span class="skill-pill"><i class="devicon-laravel-plain colored"></i> Laravel 12</span>
+            <span class="skill-pill"><i class="devicon-python-plain colored"></i> Python</span>
+            <span class="skill-pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+            <span class="skill-pill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+            <span class="skill-pill"><i class='bx bx-transfer-alt'></i> API REST</span>
+          </div>
         </div>
-        <div class="skill-card reveal">
-          <h3>Ferramentas & Metodologias</h3>
-          <ul>
-            <li><i class='bx bx-check-circle'></i> Git & GitHub</li>
-            <li><i class='bx bx-check-circle'></i> Scrum</li>
-            <li><i class='bx bx-check-circle'></i> UI/UX (Figma)</li>
-            <li><i class='bx bx-check-circle'></i> FlutterFlow</li>
-          </ul>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <div class="skill-group-icon"><i class='bx bx-wrench'></i></div>
+            <h3>Ferramentas</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-git-plain colored"></i> Git / GitHub</span>
+            <span class="skill-pill"><i class="devicon-figma-plain colored"></i> Figma & UI·UX</span>
+            <span class="skill-pill"><i class='bx bx-git-branch'></i> Scrum</span>
+            <span class="skill-pill"><i class="devicon-flutter-plain colored"></i> FlutterFlow</span>
+            <span class="skill-pill"><i class='bx bx-bar-chart-alt-2'></i> Streamlit</span>
+            <span class="skill-pill"><i class="devicon-java-plain colored"></i> Java (Básico)</span>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -220,11 +284,11 @@
 <article
   class="project-card project-card-featured"
   data-title="LewSoft - Plataforma SaaS Multi-tenant"
-  data-description="Arquitetura multi-tenant que permite criar lojas independentes com apenas alguns cliques|Catálogo virtual multicategorias (Smartphones, Notebooks, Tablets)|Simulador inteligente de troca de aparelhos usados com regras condicionais personalizáveis|Motor de precificação dinâmica baseado no estado do produto|Checkout via WhatsApp sem taxas de gateway|Painel administrativo completo para gestão de produtos e estoque|Área Super Admin para criação de novos tenants|Personalização total (logo, cores, banners) por loja|Sistema responsivo e otimizado para mobile-first"
-  data-tech="PHP,Laravel,MySQL,SaaS,Multi-tenant,WhatsApp API"
+  data-description="Arquitetura multi-tenant com roteamento automático por subdomínio e middleware de identificação de lojista|Sistema multi-segmento config-driven: suporte a celulares, ar-condicionado, automóveis e outros sem código adicional|Simulação de Troca Inteligente com motor de cálculo baseado em armazenamento, bateria e condição do produto|Dois modos de troca: oferta automática na tela (Troca Inteligente) e avaliação manual pela equipe (Troca Padrão)|Geração de proposta em PDF e envio via WhatsApp pelo próprio lojista|Catálogo público com 4 temas visuais distintos: Padrão, Moderno, Clássico e Minimalista|Painel administrativo por loja com campos dinâmicos por segmento e tabela de preços de troca configurável|Sistema de parcelamento com Fórmula Price: parcelas sem juros + parcelas com juros por taxa mensal|Painel Dev (Super Admin) com parser automático de endereço via Google Maps"
+  data-tech="PHP 8.2,Laravel 12,Alpine.js,Tailwind CSS,MySQL,Vite,DomPDF,Nginx"
   data-gallery="img/projects/lewsoftimg/catalogo.png,img/projects/lewsoftimg/detalhesproduto.png"
-  data-github=https://github.com/leodevss/lewsoft
-  data-live="https://nomedasualojaaqui.lewsoft.com.br"
+  data-github="https://github.com/leodevss/lewsoft"
+  data-live="https://nomedasualojaaqui.lewsoft.com.br">
 
   <!-- Badge de Destaque -->
   <div class="project-badge">Projeto Principal</div>
@@ -242,20 +306,57 @@
   <div class="project-card-content">
     <h3 class="project-card-title">LewSoft - Plataforma SaaS</h3>
     <p class="project-card-description">
-      Sistema multi-tenant completo para gestão de lojas de eletrônicos com IA de precificação.
+      Plataforma SaaS multi-tenant para pequenas lojas físicas com catálogo digital, simulação de troca e painel de gestão.
     </p>
 
     <!-- Tecnologias usadas -->
     <ul class="project-card-tech">
-      <li class="tech-badge">Laravel</li>
-      <li class="tech-badge">SaaS</li>
+      <li class="tech-badge">Laravel 12</li>
+      <li class="tech-badge">Alpine.js</li>
       <li class="tech-badge">Multi-tenant</li>
     </ul>
     <div class="project-btn-more">Ver Mais <i class='bx bx-right-arrow-alt'></i></div>
   </div>
 </article>
 
-            <!-- Projeto 2 -->
+            <!-- Projeto 2: LewControl -->
+<article
+  class="project-card project-card-featured"
+  data-title="LewControl - ERP para Empresas de Ar-Condicionado"
+  data-description="Gestão de Ordens de Serviço com fluxo completo de status: Pendente → Em Execução → Executada → Faturada, vinculadas a contratos públicos com controle automático de saldo|Controle de Empenhos governamentais com monitoramento de saldo, alertas de consumo crítico e bloqueio preventivo ao ultrapassar o limite disponível|Planejamento de Viagens com roteirização de equipes de campo, agrupamento de OS por região geográfica e geração de PDF de roteiro para técnicos|Faturamento em Kanban com 5 etapas: A Faturar, NF Emitida, NF Enviada, Em Cobrança e Pago|Painel de KPIs com faturamento mensal, OS pendentes, empenhos críticos e oportunidades logísticas em tempo real|Exportação de PDF formatado para importação no sistema de gestão de campo Auvo|Notificações automáticas para empenhos com saldo baixo, OS vencidas e pendências financeiras|Busca global unificada de OS, clientes e notas fiscais em toda a base de dados"
+  data-tech="PHP 8.2,Laravel 12,Bootstrap 5,MySQL,FullCalendar 6,DomPDF"
+  data-gallery="img/projects/lewcontrol/painel.png,img/projects/lewcontrol/faturamento.png,img/projects/lewcontrol/relatorios.png,img/projects/lewcontrol/viagens.png">
+
+  <!-- Badge de Destaque -->
+  <div class="project-badge">Cliente Real</div>
+
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img
+      src="img/capas/capa4.png"
+      alt="Capa do projeto LewControl"
+      class="project-card-img"
+      loading="lazy">
+  </figure>
+
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">LewControl - ERP Nichado</h3>
+    <p class="project-card-description">
+      Sistema de gestão para empresas de manutenção de ar-condicionado com contratos públicos, OS e faturamento.
+    </p>
+
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+      <li class="tech-badge">Laravel 12</li>
+      <li class="tech-badge">Bootstrap 5</li>
+      <li class="tech-badge">MySQL</li>
+    </ul>
+    <div class="project-btn-more">Ver Mais <i class='bx bx-right-arrow-alt'></i></div>
+  </div>
+</article>
+
+            <!-- Projeto 3 -->
 <article
   class="project-card project-card-featured"
   data-title="Sistema de Controle de Estoque"
@@ -288,6 +389,46 @@
       <li class="tech-badge">PHP</li>
       <li class="tech-badge">MySQL</li>
       <li class="tech-badge">JavaScript</li>
+    </ul>
+    <div class="project-btn-more">Ver Mais <i class='bx bx-right-arrow-alt'></i></div>
+  </div>
+</article>
+
+            <!-- Projeto 5: Roleta de Prêmios -->
+<article
+  class="project-card project-card-featured"
+  data-title="Roleta de Prêmios — SaaS de Captação de Leads"
+  data-description="Arquitetura Multi-tenant com banco SQLite isolado por loja (sem framework)|Engine de roleta desenhada pixel a pixel em HTML5 Canvas|Sistema de probabilidades ponderadas configurável pelo admin|Gate de avaliação Google para liberar o voucher ao cliente|Cooldown de 24h por número de WhatsApp para evitar abusos|PIN de atendente para controle de acesso em loja física|Painel Super Admin para criação e gestão de múltiplos tenants|Analytics com Chart.js no painel administrativo"
+  data-tech="PHP,SQLite3,HTML5 Canvas,JavaScript,Tailwind CSS,Chart.js"
+  data-gallery="img/projects/roleta/inicio.png,img/projects/roleta/roletag.png,img/projects/roleta/avalia.png"
+  data-github="https://github.com/leodevss/roleta"
+  data-live="https://roleta.lewsoft.com.br/">
+
+  <!-- Badge de Destaque -->
+  <div class="project-badge">SaaS Multi-tenant</div>
+
+  <!-- Imagem de capa do projeto -->
+  <figure class="project-card-image">
+    <img
+      src="img/capas/capa5.png"
+      alt="Capa do projeto Roleta de Prêmios"
+      class="project-card-img"
+      loading="lazy">
+  </figure>
+
+  <!-- Conteúdo do card -->
+  <div class="project-card-content">
+    <h3 class="project-card-title">Roleta de Prêmios — SaaS</h3>
+    <p class="project-card-description">
+      Plataforma SaaS B2B de gamificação para varejo com roleta em Canvas, multi-tenant e captação de leads via WhatsApp.
+    </p>
+
+    <!-- Tecnologias usadas -->
+    <ul class="project-card-tech">
+      <li class="tech-badge">PHP</li>
+      <li class="tech-badge">SQLite3</li>
+      <li class="tech-badge">Canvas API</li>
+      <li class="tech-badge">Tailwind CSS</li>
     </ul>
     <div class="project-btn-more">Ver Mais <i class='bx bx-right-arrow-alt'></i></div>
   </div>
@@ -334,49 +475,87 @@
       </div>
     </section>
 
+    <!-- ==================== DEPOIMENTO ==================== -->
+    <section class="section testimonial-section">
+      <h2 class="section-title reveal">Feedback Real</h2>
+      <div class="testimonial-container container reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon"><i class='bx bxs-quote-alt-left'></i></div>
+          <p class="testimonial-text">
+            "O sistema que o Leonardo desenvolveu transformou nossa operação. Antes tínhamos planilhas para tudo — empenhos, ordens de serviço, faturamento. Ele entregou uma plataforma completa que já rodou desde a primeira semana. Entendeu o negócio rápido e trouxe funcionalidades que nem tínhamos pensado. Recomendo muito."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <i class='bx bx-building-house'></i>
+            </div>
+            <div class="testimonial-info">
+              <strong>Gestão de Contratos</strong>
+              <span>Schappo Climatização — Cliente Real</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== ESTATÍSTICAS ==================== -->
     <section class="stats section">
       <div class="stats-container container">
-        <div class="stats-box">
-          <i class='bx bx-rocket stats-icon'></i>
-          <div class="stats-content">
-            <h3 class="stats-number" data-target="3" data-plus="true">0</h3>
-            <p class="stats-title">Projetos Entregues</p>
-          </div>
+        <div class="stats-item">
+          <span class="stats-number" data-target="4" data-plus="true">0</span>
+          <span class="stats-label">Projetos Entregues</span>
         </div>
-        <div class="stats-box">
-          <i class='bx bx-code-alt stats-icon'></i>
-          <div class="stats-content">
-            <h3 class="stats-number" data-target="1000" data-plus="true">0</h3>
-            <p class="stats-title">Horas de Código</p>
-          </div>
+        <div class="stats-sep" aria-hidden="true"></div>
+        <div class="stats-item">
+          <span class="stats-number" data-target="1000" data-plus="true">0</span>
+          <span class="stats-label">Horas de Código</span>
         </div>
-        <div class="stats-box">
-          <i class='bx bx-layer stats-icon'></i>
-          <div class="stats-content">
-            <h3 class="stats-number" data-target="10" data-plus="true">0</h3>
-            <p class="stats-title">Tecnologias</p>
-          </div>
+        <div class="stats-sep" aria-hidden="true"></div>
+        <div class="stats-item">
+          <span class="stats-number" data-target="2" data-plus="true">0</span>
+          <span class="stats-label">Sistemas em Produção</span>
+        </div>
+        <div class="stats-sep" aria-hidden="true"></div>
+        <div class="stats-item">
+          <span class="stats-number" data-target="10" data-plus="true">0</span>
+          <span class="stats-label">Tecnologias</span>
         </div>
       </div>
     </section>
 
     <!-- Contato -->
     <section class="section" id="contato">
-      <h2 class="section-title reveal">Vamos Conversar?</h2>
-      <div class="contact-container container">
-        <div class="contact-simple reveal">
-          <a href="mailto:leosouzadevs@gmail.com" class="contact-email">
+      <h2 class="section-title reveal">Vamos Conversar</h2>
+      <p class="section-subtitle reveal">Aberto a projetos, vagas e parcerias.</p>
+      <div class="contact-minimal container reveal">
+
+        <div class="contact-links-row">
+          <a href="mailto:leosouzadevs@gmail.com" class="contact-link-card">
             <i class='bx bx-envelope'></i>
-            <span>leosouzadevs@gmail.com</span>
+            <div>
+              <span class="clc-label">Email</span>
+              <span class="clc-value">leosouzadevs@gmail.com</span>
+            </div>
           </a>
-          <div class="social-icons">
-            <a href="https://github.com/leodevss" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
-            <a href="https://www.linkedin.com/in/leonardo-de-souza-3a3247273/" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://wa.me/5549991899876" target="_blank" title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
-            <a href="https://instagram.com/_leosouza7" target="_blank" title="Instagram"><i class='bx bxl-instagram-alt'></i></a>
-          </div>
+          <a href="https://wa.me/5549991899876" target="_blank" class="contact-link-card contact-link-wa">
+            <i class='bx bxl-whatsapp'></i>
+            <div>
+              <span class="clc-label">WhatsApp</span>
+              <span class="clc-value">+55 49 99189-9876</span>
+            </div>
+          </a>
         </div>
+
+        <button class="button" id="open-contact-modal">
+          <i class='bx bx-send'></i> Enviar Mensagem
+        </button>
+
+        <div class="social-icons">
+          <a href="https://github.com/leodevss" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
+          <a href="https://www.linkedin.com/in/leonardo-de-souza-3a3247273/" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+          <a href="https://wa.me/5549991899876" target="_blank" title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+          <a href="https://instagram.com/_leosouza7" target="_blank" title="Instagram"><i class='bx bxl-instagram-alt'></i></a>
+        </div>
+
       </div>
     </section>
   </main>
@@ -450,6 +629,43 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal de Contato -->
+  <div class="contact-modal" id="contact-modal" aria-hidden="true">
+    <div class="contact-modal-overlay" id="contact-modal-overlay"></div>
+    <div class="contact-modal-box">
+      <button class="contact-modal-close" id="close-contact-modal" aria-label="Fechar">
+        <i class='bx bx-x'></i>
+      </button>
+      <h3 class="contact-modal-title">Enviar Mensagem</h3>
+      <p class="contact-modal-sub">Respondo em até 24h.</p>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xeojvvbd" method="POST">
+        <div class="form-group">
+          <label for="contact-name">Nome</label>
+          <input type="text" id="contact-name" name="name" placeholder="Seu nome" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" placeholder="Fale sobre seu projeto ou oportunidade..." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn">
+          <i class='bx bx-send'></i> Enviar
+        </button>
+        <div class="form-success" id="form-success">
+          <i class='bx bx-check-circle'></i> Mensagem enviada! Entrarei em contato em breve.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Botão voltar ao topo -->
+  <button class="back-to-top" id="back-to-top" title="Voltar ao topo" aria-label="Voltar ao topo">
+    <i class='bx bx-chevron-up'></i>
+  </button>
 
   <script src="main.js"></script>
 </body>

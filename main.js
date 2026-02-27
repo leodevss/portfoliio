@@ -358,4 +358,158 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   console.log("JS carregado com sucesso! Menu Mobile e Modal funcionando.");
+
+  /*======================================================
+    SCROLL SPY — ACTIVE NAV LINK
+  ======================================================*/
+  const sections = document.querySelectorAll('section[id]');
+  const navLinksAll = document.querySelectorAll('.nav-link');
+
+  const activateNavLink = () => {
+    const scrollY = window.scrollY;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      const matchingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinksAll.forEach(l => l.classList.remove('active'));
+        if (matchingLink) matchingLink.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', activateNavLink, { passive: true });
+  activateNavLink();
+
+  /*======================================================
+    HEADER SCROLL EFFECT
+  ======================================================*/
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= 80) {
+      header && header.classList.add('scroll-header');
+    } else {
+      header && header.classList.remove('scroll-header');
+    }
+  }, { passive: true });
+
+  /*======================================================
+    BACK TO TOP BUTTON
+  ======================================================*/
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /*======================================================
+    CURSOR SPOTLIGHT
+  ======================================================*/
+  const spotlight = document.getElementById('cursor-spotlight');
+
+  if (spotlight) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    const animateSpotlight = () => {
+      currentX += (mouseX - currentX) * 0.12;
+      currentY += (mouseY - currentY) * 0.12;
+      spotlight.style.left = currentX + 'px';
+      spotlight.style.top = currentY + 'px';
+      requestAnimationFrame(animateSpotlight);
+    };
+
+    animateSpotlight();
+  }
+
+  /*======================================================
+    MODAL DE CONTATO
+  ======================================================*/
+  const contactModal = document.getElementById('contact-modal');
+  const openContactModalBtn = document.getElementById('open-contact-modal');
+  const closeContactModalBtn = document.getElementById('close-contact-modal');
+  const contactModalOverlay = document.getElementById('contact-modal-overlay');
+
+  const openContactModal = () => {
+    if (contactModal) {
+      contactModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeContactModal = () => {
+    if (contactModal) {
+      contactModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  if (openContactModalBtn) openContactModalBtn.addEventListener('click', openContactModal);
+  if (closeContactModalBtn) closeContactModalBtn.addEventListener('click', closeContactModal);
+  if (contactModalOverlay) contactModalOverlay.addEventListener('click', closeContactModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && contactModal && contactModal.classList.contains('active')) {
+      closeContactModal();
+    }
+  });
+
+  /*======================================================
+    CONTACT FORM (FORMSPREE)
+  ======================================================*/
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+
+  if (contactForm && formSuccess) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('.form-submit-btn');
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Enviando...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          formSuccess.classList.add('visible');
+          setTimeout(() => {
+            formSuccess.classList.remove('visible');
+            closeContactModal();
+          }, 3000);
+        } else {
+          alert('Erro ao enviar. Tente pelo email diretamente: leosouzadevs@gmail.com');
+        }
+      } catch {
+        alert('Sem conexão. Tente pelo email: leosouzadevs@gmail.com');
+      } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
 });
