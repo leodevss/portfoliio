@@ -1693,6 +1693,8 @@ p {
   padding: 0 2rem 1.75rem;
   max-height: calc(90vh - 140px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* scroll suave no iOS */
+  overscroll-behavior: contain; /* impede vazar scroll para a página */
 }
 
 .modal-body::-webkit-scrollbar {
@@ -2007,8 +2009,8 @@ p {
   }
 
   .modal-close-btn {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     top: 0.75rem;
     right: 0.75rem;
     border-radius: 10px;

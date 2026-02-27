@@ -67,7 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModal = (card) => {
       // Ativa o modal
       modal.classList.add('active');
+      // iOS Safari fix: overflow:hidden sozinho não funciona; usar position:fixed
+      const scrollY = window.scrollY;
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      modal.dataset.scrollY = scrollY;
 
       // Pega os dados do card
       const title = card.dataset.title;
@@ -180,7 +186,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const closeModal = () => {
       modal.classList.remove('active');
+      // Restaura a posição de scroll exata antes de abrir o modal
+      const scrollY = parseInt(modal.dataset.scrollY || '0');
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     };
 
     // Event listeners
@@ -451,14 +463,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const openContactModal = () => {
     if (contactModal) {
       contactModal.classList.add('active');
+      const scrollY = window.scrollY;
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      contactModal.dataset.scrollY = scrollY;
     }
   };
 
   const closeContactModal = () => {
     if (contactModal) {
       contactModal.classList.remove('active');
+      const scrollY = parseInt(contactModal.dataset.scrollY || '0');
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     }
   };
 
