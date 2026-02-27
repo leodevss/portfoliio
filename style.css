@@ -2414,6 +2414,45 @@ p {
   box-shadow: 0 10px 30px rgba(16, 185, 129, 0.6);
 }
 
+/*=============== FLOAT CONTACT BUTTON (MOBILE) ===============*/
+.float-contact-btn {
+  display: none; /* escondido no desktop — o nav já tem "Fale Comigo" */
+}
+
+@media screen and (max-width: 992px) {
+  .float-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 14px;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  }
+
+  .float-contact-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .float-contact-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.6);
+  }
+}
+
 /*=============== DEVICONS NAS SKILL PILLS ===============*/
 .skill-pill {
   gap: 0.45rem;
@@ -2891,6 +2930,14 @@ p {
   .back-to-top {
     bottom: 1.25rem;
     right: 1.25rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1.35rem;
+  }
+
+  .float-contact-btn {
+    bottom: 1.25rem;
+    left: 1.25rem;
     width: 42px;
     height: 42px;
     font-size: 1.35rem;

@@ -407,17 +407,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { passive: true });
 
   /*======================================================
-    BACK TO TOP BUTTON
+    BACK TO TOP + FLOAT CONTACT BUTTONS
   ======================================================*/
   const backToTopBtn = document.getElementById('back-to-top');
+  const floatContactBtn = document.getElementById('float-contact-btn');
 
   if (backToTopBtn) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 400) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
+      const scrolled = window.scrollY >= 400;
+      backToTopBtn.classList.toggle('visible', scrolled);
+      if (floatContactBtn) floatContactBtn.classList.toggle('visible', scrolled);
     }, { passive: true });
 
     backToTopBtn.addEventListener('click', () => {
